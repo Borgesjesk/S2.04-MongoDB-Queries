@@ -29,10 +29,10 @@ db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 80, $lt: 100 } } } }
 db.restaurants.find({ "address.coord.0": { $lt: -95.754168 } }, { _id: 0 });
 
 // 11. Trobar restaurants que no preparen 'American', amb qualificació > 70 i longitud < -65.754168.
-db.restaurants.find({ $and: [{ cuisine: { $ne: "American" } }, { "grades.score": { $gt: 70 } }, { "address.coord": { $lt: -65.754168 } }] }, { _id: 0 });
+db.restaurants.find({ $and: [{ cuisine: { $ne: "American" } }, { "grades.score": { $gt: 70 } }, { "location.coordinates.0": { $lt: -65.754168 } }] }, { _id: 0 });
 
 // 12. El mateix que l'anterior però sense usar operador $and.
-db.restaurants.find({ cuisine: { $ne: "American" }, "grades.score": { $gt: 70 }, "address.coord": { $lt: -65.754168 } }, { _id: 0 });
+db.restaurants.find({ cuisine: { $ne: "American" }, "grades.score": { $gt: 70 }, "location.coordinates.0": { $lt: -65.754168 } }, { _id: 0 });
 
 // 13. Trobar restaurants que no són 'American', grau 'A', i no són de Brooklyn. Ordenats per cuisine descendent.
 db.restaurants.find({ cuisine: { $ne: "American" }, "grades.grade": "A", borough: { $ne: "Brooklyn" } }, { _id: 0 }).sort({ cuisine: -1 });
@@ -83,7 +83,7 @@ db.restaurants.find({}, { _id: 0 }).sort({ cuisine: 1, borough: -1 });
 db.restaurants.find({ $or: [{ "address.street": { $exists: false } }, { "address.street": null }, { "address.street": "" }] }, { _id: 0, address: 1 });
 
 // 29. Seleccionar documents on el valor de coordinate és de tipus Double. Mostrar el name, restaurant_id i coordinades.
-db.restaurants.find({ "address.coord": { $type: "double" } }, { _id: 0, name: 1, restaurant_id: 1, "address.coord": 1 });
+db.restaurants.find({ "location.coordinates": { $type: "double" } }, { _id: 0, name: 1, restaurant_id: 1, "location.coordinates": 1 });
 
 // 30. Mostrar restaurant_id, name i grade per restaurants amb marcador divisible per 7 (resta 0).
 db.restaurants.find({ "grades.score": { $mod: [7, 0] } }, { _id: 0, restaurant_id: 1, name: 1, grades: 1 });
