@@ -95,9 +95,9 @@
 - ❌ MISMATCH - Query **[ 28 ]** Result does not match expected output.
 
 
-🔢 Different result lengths: 
-- **Expected:** 3
-- **Got:** 2
+🧩 Mismatch at position 0:
+- **Expected:** {"address":{}}
+- **Actual:** {"address":{},"borough":"Brooklyn","cuisine":"Hamburgers","grades":[{},{},{}],"location":{},"name":"White Castle","restaurant_id":40386837}
 
 ---
 - ❌ MISMATCH - Query **[ 29 ]** Result does not match expected output.
@@ -111,7 +111,12 @@
 - ✔️ OK - Query **[ 30 ]**
 
 ---
-- ✔️ OK - Query **[ 31 ]**
+- ❌ MISMATCH - Query **[ 31 ]** Result does not match expected output.
+
+
+🧩 Mismatch at position 0:
+- **Expected:** {"borough":"Manhattan","cuisine":"American","location":{},"name":"Desmond'S Tavern"}
+- **Actual:** {"address":{},"borough":"Manhattan","cuisine":"American","name":"Desmond'S Tavern"}
 
 ---
 - ✔️ OK - Query **[ 32 ]**
